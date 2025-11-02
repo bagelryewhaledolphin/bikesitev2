@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type='text/javascript' src='https://cdn.scaledrone.com/scaledrone.min.js'></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+
+<title>BIKESITE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+  
+  <style>
+    body {
+      font-family: Georgia, serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      height: 100vh;
+    }
+    .content {
+      background-color: #F2F2F2;
+      border-style: solid;
+      border-width: 1px;
+      border-color: #E4E4E4;
+      border-radius: 25px;
+      height: 100vh;
+      max-height: 600px;
+      width: 100vw;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+    }
+    .messages {
+      flex-grow: 1;
+      padding: 20px 30px;
+      overflow: auto;
+    }
+    .message {
+      display: flex;
+      flex-direction: column;
+    }
+    .message--mine {
+      align-items: flex-end;
+    }
+    .message--theirs {
+      align-items: flex-start;
+    }
+    .message__name {
+      padding: 10px 0;
+    }
+    .message__bubble {
+      padding: 20px;
+      border-radius: 15px;
+    }
+    .message--theirs .message__bubble {
+      background: #7CDE7C;
+      color: white;
+      border-radius: 15px;
+    }
+    .message--mine .message__bubble {
+      background: rgba(0,0,0,1);
+    }
+    .footer {
+      line-height: 76px;
+      border-top: 1% solid rgba(0,0,0,1);
+      display: flex;
+      flex-shrink: 0;
+    }
+    input {
+      height: 76px;
+      border: none;
+      flex-grow: 1;
+      padding: 0 30px;
+      font-size: 16px;
+      background: transparent;
+    }
+    button {
+      border: none;
+      border-radius: 25px;
+      background-color: #7CDE7C;
+      padding: 0 30px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+    
+
+<body>
+
+<center><header><nav>
+<br><h1>BIKESITE</h1>
+<a href="index.html" class="btn btn-outline-dark"> Home Page </a>
+<a href="bikechat.html" class="btn btn-outline-dark"> Chat Page</a>
+<br>
+
+    </nav></header></center>
+  
+  <div class="content">
+    <div class="messages">
+
+    </div>
+    <form class="footer" onsubmit="return false;">
+      <input type="text" placeholder="Your message..">
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <template data-template="message">
+    <div class="message">
+      <div class="message__name"></div>
+      <div class="message__bubble"></div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
