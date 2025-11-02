@@ -182,7 +182,7 @@ hist=[];
 room.on('history_message', ({data}) => {
 
     if (isMessageAllowed(data)) {
-    document.getElementById("one").innerHTML=document.getElementById("one").innerHTML+"<br>"+data;
+    document.getElementById("one").innerHTML += "<br>" + data;
     }
 });
   room.on('data', (text, member) => {
