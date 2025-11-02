@@ -153,6 +153,7 @@ drone.on('open', error => {
   const room = drone.subscribe('observable-room', {
     historyCount: 100 // ask for the latest message from history
   });
+  
   room.on('open', error => {
     if (error) {
       return console.error(error);
@@ -179,12 +180,16 @@ room.on('member_leave', ({id}) => {
 hist=[];
 
 room.on('history_message', ({data}) => {
-    document.getElementById("one").innerHTML=document.getElementById("one").innerHTML+"<br>"+data;
 
+    if (isMessageAllowed(data)) {
+    document.getElementById("one").innerHTML=document.getElementById("one").innerHTML+"<br>"+data;
+    }
 });
   room.on('data', (text, member) => {
     if (member) {
-      addMessageToListDOM(text, member);
+      if (isMessageAllowed(text)) {
+        addMessageToListDOM(text, member);
+      }
     } else {
       // Message is from server
     }
@@ -198,6 +203,14 @@ drone.on('close', event => {
 drone.on('error', error => {
   console.error(error);
 });
+
+const bannedWords = ["spam"];
+
+  function isMessageAllowed(message) {
+      if (!message) return true;
+      const lowerMsg = message.toLowerCase();
+    return !bannedWords.some(word => lowerMsg.includes(word.toLowerCase()));
+  }
 
 function getRandomName() {
  console.log("Got random name!");
